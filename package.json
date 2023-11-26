@@ -1,0 +1,23 @@
+{
+  "name": "sms-3to2",
+  "version": "0.1.0",
+  "description": "A shit container.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0123456789-jpg/sms-3to2.git"
+  },
+  "keywords": [
+    "shit",
+    "sms"
+  ],
+  "author": "C191239",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/0123456789-jpg/sms-3to2/issues"
+  },
+  "homepage": "https://github.com/0123456789-jpg/sms-3to2#readme"
+}
