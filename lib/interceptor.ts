@@ -1,4 +1,5 @@
 import { AxiosInstance, InternalAxiosRequestConfig, default as axios } from "axios";
+import { transformCreateAccount } from "./transformer";
 
 function listenRequest(request: InternalAxiosRequestConfig<any>):InternalAxiosRequestConfig<any>|Promise<InternalAxiosRequestConfig<any>> {
     if (request.method?.toLowerCase() === "post") {
@@ -6,6 +7,7 @@ function listenRequest(request: InternalAxiosRequestConfig<any>):InternalAxiosRe
         const config = request;
         switch (path) {
         case "/api/account/create":
+            transformCreateAccount();
             break;
         case "/api/account/verify":
         default:
