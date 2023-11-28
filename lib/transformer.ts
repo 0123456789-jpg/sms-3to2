@@ -1,7 +1,11 @@
 import { InternalAxiosRequestConfig } from "axios";
 
-export function transformCreateAccount():Promise<InternalAxiosRequestConfig<any>>{
-    return Promise.reject("No need in sms2");
+export function transformCreateAccountRequest(config: InternalAxiosRequestConfig):InternalAxiosRequestConfig<any>{
+    config.url="/auth/activateMail";
+    return config;
 }
 
-//function transformVerifyAccount(config: InternalAxiosRequestConfig<any>):InternalAxiosRequestConfig<any>{}
+export function transformVerifyAccountRequest(config: InternalAxiosRequestConfig<any>):InternalAxiosRequestConfig<any>{
+    // TODO
+    return config;
+}

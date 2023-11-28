@@ -1,3 +1,3 @@
-export interface CreateAccount3{
-    email:string
+export interface CreateAccount3 {
+    email: string
 }

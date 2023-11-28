@@ -1,5 +1,7 @@
 // Data struct for sms2
 
+
+// Currently not needed, reserved
 export interface Email2 {
     email: string
 }
