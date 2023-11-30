@@ -1,6 +1,6 @@
 import { InternalAxiosRequestConfig } from "axios";
-import { AbstractVerifyAccount3, VerifyAccount3, VerifyActivateAccount3, VerifyResetPassword3 } from "./struct3";
-import { FullUser2, ResetPasswordInfo2 } from "./struct2";
+import { AbstractVerifyAccount3, VerifyAccount3, VerifyActivateAccount3, VerifyResetPassword3 } from "../type/struct3";
+import { FullUser2, ResetPasswordInfo2 } from "../type/struct2";
 
 export function transformCreateAccountRequest(config: InternalAxiosRequestConfig): InternalAxiosRequestConfig<any> {
     config.url = "/auth/activateMail";
@@ -47,4 +47,9 @@ export function transformLoginAccountRequest(config:InternalAxiosRequestConfig<a
     config.url="/auth/login";
     return config;
     // TODO
+}
+
+export function transformLogoutAccountRequest(config:InternalAxiosRequestConfig<any>):Promise<InternalAxiosRequestConfig<any>>{
+    config;
+    return Promise.reject("please copy dck's token when he is absent");
 }
