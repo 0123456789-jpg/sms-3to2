@@ -42,3 +42,9 @@ export function transformVerifyAccountRequest(config: InternalAxiosRequestConfig
     }
     return config;
 }
+
+export function transformLoginAccountRequest(config:InternalAxiosRequestConfig<any>):InternalAxiosRequestConfig<any>{
+    config.url="/auth/login";
+    return config;
+    // TODO
+}
