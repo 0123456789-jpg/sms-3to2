@@ -10,6 +10,8 @@ function listenRequest(request: InternalAxiosRequestConfig<any>): InternalAxiosR
                 transformCreateAccountRequest(config);
                 break;
             case "/api/account/verify":
+                transformCreateAccountRequest(config);
+                break;
             default:
                 break;
         }
@@ -18,9 +20,9 @@ function listenRequest(request: InternalAxiosRequestConfig<any>): InternalAxiosR
     return request;
 }
 
-export function inject(instance: AxiosInstance | null) {
+export function inject(instance: AxiosInstance | null): number {
     if (instance === null) {
         instance = axios;
     }
-    instance.interceptors.request.use(listenRequest, function (error) {/*TODO*/return error; });
+    return instance.interceptors.request.use(listenRequest, function (error) {/*TODO*/return error; });
 }
