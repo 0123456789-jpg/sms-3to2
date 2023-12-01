@@ -43,13 +43,13 @@ export function transformVerifyAccountRequest(config: InternalAxiosRequestConfig
     return config;
 }
 
-export function transformLoginAccountRequest(config:InternalAxiosRequestConfig<any>):InternalAxiosRequestConfig<any>{
-    config.url="/auth/login";
+export function transformLoginAccountRequest(config: InternalAxiosRequestConfig<any>): InternalAxiosRequestConfig<any> {
+    config.url = "/auth/login";
     return config;
     // TODO
 }
 
-export function transformLogoutAccountRequest(config:InternalAxiosRequestConfig<any>):Promise<InternalAxiosRequestConfig<any>>{
+export function transformLogoutAccountRequest(config: InternalAxiosRequestConfig<any>): Promise<InternalAxiosRequestConfig<any>> {
     config;
     return Promise.reject("please copy dck's token when he is absent");
 }

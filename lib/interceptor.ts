@@ -1,16 +1,16 @@
-import { AxiosInstance, InternalAxiosRequestConfig, default as axios } from "axios";
-import { transformCreateAccountRequest } from "./transformer";
+import { AxiosInstance, AxiosResponse, InternalAxiosRequestConfig, default as axios } from "axios";
+import { transformCreateAccountRequest } from "./transformer/request";
 
 function listenRequest(request: InternalAxiosRequestConfig<any>): InternalAxiosRequestConfig<any> | Promise<InternalAxiosRequestConfig<any>> {
     if (request.method?.toLowerCase() === ("post" || "get")) {
         const path = request.url?.toLowerCase();
-        const config = request;
+        let config: InternalAxiosRequestConfig<any> | Promise<InternalAxiosRequestConfig<any>> = request;
         switch (path) {
             case "/api/account/create":
-                transformCreateAccountRequest(config);
+                config = transformCreateAccountRequest(config);
                 break;
             case "/api/account/verify":
-                transformCreateAccountRequest(config);
+                config = transformCreateAccountRequest(config);
                 break;
             default:
                 break;
@@ -20,9 +20,23 @@ function listenRequest(request: InternalAxiosRequestConfig<any>): InternalAxiosR
     return request;
 }
 
-export function inject(instance: AxiosInstance | null): number {
+function listenResponse(response: AxiosResponse<any, any>): AxiosResponse<any, any> | Promise<AxiosResponse<any, any>> {
+    const path=response.config.url?.toLowerCase();
+}
+
+export function inject(instance: AxiosInstance | null): InterceptorId {
     if (instance === null) {
         instance = axios;
     }
-    return instance.interceptors.request.use(listenRequest, function (error) {/*TODO*/return error; });
+    const ret: InterceptorId = {
+        request: instance.interceptors.request.use(listenRequest, function (error) {/*TODO*/return error; }),
+        response: instance.interceptors.response.use()
+    };
+    return ret;
+
+}
+
+export interface InterceptorId {
+    request: number,
+    response: number
 }
