@@ -18,8 +18,14 @@ function listenRequest(request: InternalAxiosRequestConfig<any>): InternalAxiosR
 }
 
 function listenResponse(response: AxiosResponse<any, any>): AxiosResponse<any, any> | Promise<AxiosResponse<any, any>> {
-    const path=response.config.url?.toLowerCase();
-
+    const path = response.config.url?.toLowerCase();
+    switch(path){
+        case "/auth/activateMail".toLowerCase():
+            
+            break;
+        default:
+            break;
+    }
 }
 
 export function inject(instance: AxiosInstance | null): InterceptorId {
@@ -32,6 +38,14 @@ export function inject(instance: AxiosInstance | null): InterceptorId {
     };
     return ret;
 
+}
+
+export function eject(instance: AxiosInstance | null, id: InterceptorId) {
+    if (instance === null) {
+        instance = axios;
+    }
+    instance.interceptors.request.eject(id.request);
+    instance.interceptors.response.eject(id.response);
 }
 
 export interface InterceptorId {
